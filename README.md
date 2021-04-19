@@ -138,10 +138,104 @@ For the label (“FWBscore”), a simple label encoding scheme was used. The “
 Data partitioning is required for a train-test split evaluation of our machine learning models. This helps to prevent the problem of overfitting. If we train and evaluate our models on the same data, the models would have seen all the data and achieve overly optimistic performance scores. A separate set of data is required to independently evaluate our models on unseen data for a robust estimate of their classification accuracies. The procedure requires splitting our data set into 2 subsets: training dataset and testing dataset. For the split ratio, we use the common 70:30 train-test split. This means that 70% of the data will be used for training the machine learning models while 30% of the data will be used to evaluate the performance of the models. 
 
 ## Model Development and Evaluation
+### Model Development
+#### Choice of Machine Learning Algorithms
+The choice of machine learning algorithms to use depends on the business problem and analytics approach. Given that there is a need to predict which candidates belong to the “At risk” or “Not at risk” group and the labels already exist through the CFPB survey, a supervised learning approach would be appropriate. Furthermore, the prediction problem belongs to that of a classification task since we are predicting categories instead of continuous values. Therefore, the machine learning algorithms chosen should be able to support classification tasks.
+
+There are countless machine learning algorithms developed over the years and all of them have their advantages and disadvantages. Generally, there is a tradeoff between interpretability and predictability. Highly interpretable models tend to be linear with well-defined relationships and easy to compute. Models with high predictive power tend to have non-linear relationships and high computation time. Algorithms can also be tree-based, kernel-based, or distance-based. Ensemble methods such as bagging and boosting can be applied to a base model for improved performance as well, usually reducing bias or variance.
+
+To balance between exploring sufficient machine learning algorithms and avoiding excessive computation time, a total of 7 different algorithms are chosen. They are logistic regression, decision tree classifier, random forest classifier, XGBoost classifier, support vector classifier, Bernoulli naive Bayes classifier, and neural network.
+
+#### Hyperparameter Tuning
+Hyperparameters have to be pre-defined before training any machine learning model as they cannot be learnt during training time. Hyperparameter tuning seeks to determine the optimal combination of hyperparameters that allows the machine learning model to maximize its performance. The process of choosing the optimal combination of hyperparameters is not a straightforward task. A balance needs to be struck between searching for a wide range of hyperparameters and minimizing search time. There are multiple ways to tune hyperparameters. The two most popular ways are grid search and randomized search.
+
+Grid search creates a grid of possible values for the hyperparameters. Each search iteration attempts a different combination of hyperparameters in a specific order. It fits the model on all the possible combinations of hyperparameters as defined by the user. If there is a huge combination of hyperparameters, computation time will be very long.
+
+Random search also creates a grid of possible values for the hyperparameters. However, each search iteration tries a random combination of hyperparameters from the grid in no specific order. It fits the model for a number of combinations as decided by the user. If 100 iterations are chosen, the searching process is terminated after 100 times even though the entire grid has not been searched yet. The obvious advantage of random search is the faster computation time. A disadvantage is a possibility that the optimal set of hyperparameters might not be discovered. 
+
+A mix of both methods will be utilized for the 7 machine learning algorithms. Grid search will be used for algorithms with only a few hyperparameters such as logistic regression, support vector classifier, and Bernoulli naive Bayes classifier. Random search will be used for the other algorithms with more hyperparameters such as decision tree classifier, random forest classifier, XGBoost classifier, and neural network.
+
+For both grid search and random search, the number of cross-validation trials for each selected combination of hyperparameters will be set at 3. This is to maximize the data that is used for evaluating each combination of hyperparameters and minimize the variance. For the random search, the number of iterations will be set at 100. Refer to Appendix C for the hyperparameters tuned for all 7 algorithms.
+
+### Model Evaluation
+#### Confusion Matrix Explanation and its Tradeoffs
+
+![image](https://user-images.githubusercontent.com/45563371/115283286-bd122900-a17d-11eb-9ac0-f8eded78560f.png)
+
+A confusion matrix can be thought of as a contingency table for evaluating the classification performance of a machine learning model. Essentially, it is a N x N table or matrix where N is the number of classes we are trying to predict. For our data set, there are 2 classes: “At risk” and “Not at risk” encoded by 1 and 0 respectively. Therefore, the value of N is 2 and the table will have 2 rows and 2 columns with a total of 4 values.
+
+For this data set, the true label refers to the correct answer of “FWBscore” in the test data set. It is the ground truth used for evaluating the machine learning models. The predicted label is the prediction output by the machine learning models. The prediction will be either 0 or 1 since it is a binary classification problem. A comparison will be made between the true label and predicted label for each row in the test data set. Various calculations can be made with the comparisons. Specific to the confusion matrix, 4 metrics can be easily calculated. They are true positives, true negatives, false positives, and false negatives. 
+
+True positives are predicted values (“At risk”) correctly predicted as actual positives (“At risk”). True negatives are predicted values (“Not at risk”) correctly predicted as actual negatives (“Not at risk”). False positives are predicted values (“At risk”) incorrectly predicted as actual positives (“At risk”). False negatives are predicted values (“Not at risk”) incorrectly predicted as actual negatives  (“Not at risk”).
+
+True positives and true negatives are correctly classified predictions. If both true positives and true negatives are both 1 on a normalized scale, the machine learning model is perfect and made no prediction errors at all. For this project, it means all the “At risk” candidates are successfully detected and further financial intervention can be planned for them. There are also no “Not at risk” candidates misclassified as “At risk”. This ensures that all the resources provided by MSF are not wasted on candidates that do not require help. False positives and false negatives are incorrectly classified predictions. For this project, false positives and false negatives are both important and have high costs associated with them. As mentioned earlier, false positives generally take up resources that could be provided to those “At risk” candidates who need help. False negatives mean that the workers at MSF would fail to detect the “At risk” candidates and early financial intervention cannot be provided to them. Therefore, a balanced approach is required to reduce both false positives and false negatives to an acceptable level.
+
+#### Choice of Evaluation Metrics
+The choice of evaluation metrics is an important decision to make when evaluating the trained machine learning models. Our team will consider 4 key evaluation metrics commonly used by practitioners. They are accuracy, precision, recall, and F1-Score. 
+
+Accuracy is probably the most common evaluation metric used as it is simple to calculate and interpret. It is essentially the proportion of predictions the machine learning model predicted correctly. It is bounded within a range of 0 to 1 with 0 being the worst score and 1 being the best score. Generally, the accuracy score is used when the true positives and true negatives are more important and the class distribution is balanced.
+
+Precision is the proportion of true positives out of those total predicted positives. It is a suitable evaluation metric when the costs of false positives are high.
+
+Recall is the proportion of true positives out of those total actual positives. It is a suitable evaluation metric when the costs of false negatives are high.
+
+F1-Score is the harmonic mean of precision and recall. It is a suitable evaluation metric when the costs of false positives and false negatives are both high. For imbalanced data sets, F1-Score is also better than the accuracy score. It ignores true negatives in its calculation. A data set with a high proportion of one class tends to have an inflated accuracy score as the machine learning model can simply predict the majority class all the time.
+
+Given that the data set is imbalanced with an 80% negative class and both false positives and false negatives are relatively important, our team will use F1-Score as the evaluation metric for choosing the final machine learning model. However, all 4 evaluation metrics will be calculated to examine the tradeoffs between different machine learning models. Refer to Appendix D for the formula of these 4 key evaluation metrics. 
+
+#### Baseline F1-Score
+A baseline F1-Score acts as a lower bound to evaluate the performances of the machine learning models. The baseline model will be defined as the dummy predictor where it will predict the candidate to be “At risk” or 1 all the time. A trained model is usually expected to perform better than the baseline model. Otherwise, there is no reason to use the model.
+
+Given that the baseline model predicts 1 all the time, the precision will be the marginal probability P(y = 1) which equates to 0.2. This is because 20% of the labels belong to the positive class and they will be classified correctly. The other 80% of the labels belong to the negative class and they will naturally be classified wrongly. Specifically, the true positives will be 0.2 and the false positives will be 0.8. Plugging these values into the precision formula will result in the value 0.2.
+
+On the other hand, the recall will be equal to 1. Since the baseline model predicts 1 all the time, it can find out all the “At risk” candidates. It will never predict 0 or “Not at risk”. Therefore, false negatives will not exist and equate to 0 all the time. Specifically, the true positives will be 0.2 and the false negatives will be 0. Plugging these values into the recall formula will result in the value 1.
+
+With the precision and recall values for the baseline model, we can calculate the baseline F1-Score. The calculation is shown below.
+
+![image](https://user-images.githubusercontent.com/45563371/115282980-6573bd80-a17d-11eb-9ddb-805668396913.png)
+
+Therefore, the benchmark F1-Score is 0.3333 and the model is required to beat this score.
+
+#### Comparison of Evaluation Metrics
 
 ![image](https://user-images.githubusercontent.com/45563371/115279086-d49ae300-a178-11eb-9a21-1ff63601f805.png)
 
+The evaluation metrics table above details the accuracy, precision, recall, and F1-Score for all 7 trained machine learning models. All the scores were evaluated based on the test data set. Logistics regression has the highest accuracy at 0.8821. The neural network has the highest precision at 0.7778. Random forest classifier has the highest recall at 0.8656. The support vector classifier has the highest F1-Score at 0.7194.
+
+As observed, all the machine learning models managed to beat the baseline F1-Score of 0.3333. Given that we will be using the F1-Score as the evaluation metric to discriminate between the best machine learning models, the final model chosen by our team will be the support vector classifier.
+
 ## Proposed Business Recommendations
+### Recommendation 1: Application of the Proof of Concept to Actual Dataset and Identify Target Group to Assist
+In line with our objectives, we believe that our solutions can help policymakers identify the target group of people that are “At risk” of low financial well-being leading to unhappiness. Input variables can be changed to better suit the local context and include any available information that the SingPass database may already contain: MediSave coverage, ethnocultural details, to even BTO status. Once these “At risk” people are identified, the government can offer financial aid tailored to their needs. 
+
+#### Policy Level Implementation
+Our findings can impact policy decisions on many fronts and across different ministries. Our team believes that the greatest benefit can be brought about through budget reallocation in a strategic manner towards this target group. We want to be able to improve their financial well-being and happiness without compromising the welfare of others who still require finances for basic needs. This will translate to re-budgeting on areas outside of ComCare.
+One of the current measures the Singapore Government has introduced is the SG bonus. This occurs when the Government has a budget surplus for the fiscal year and decides to issue a one-time bonus to all Singaporean adults above 21. The last incident of this was in 2018, in which all Singaporean adults received $100-300 with no income cap. 
+However, not everyone may elicit the same response to this measure, especially for those who are better off in terms of financial well-being which may not have much impact on them. Someone who makes $100,000 a year may not appreciate that extra $100 as much as someone who makes $20,000 a year. 
+As such, the Singapore Government could optimize the effectiveness of the SG bonus by channeling the funds towards the target “At Risk” group whose happiness can be impacted by more financial measures. This will allow them to give out these bonuses to those who require it more rather than giving it out to everyone when some people do not even require it. 
+Subgroup Level Implementation
+
+#### Ministry and Individual Level Implementation
+After identifying the “At risk” individuals, the Ministry of Social and Family Development can assign dedicated financial planners to help these people plan their finances properly. While bonuses payout and fine-tuned policies may be able to help the “At risk” individuals in the short term, proper financial planning is required so that these people will be able to eventually achieve the financial freedom required to make their own life choices. Having a group of financial planners specialized in helping these “At risk” individuals will better aid them in the long term as the financial planners are well-versed in the various support schemes that the “At risk” individuals can apply for to achieve financial freedom. These volunteers can be sought from various financial institutions as a form of pro-bono work.
+
+#### Subgroup Level Implementation
+People who are identified with a low FWB score are bound to show similar traits. Some of these traits include poor financial knowledge, pessimism, inability to pay utility bills, and a poor outlook on life. As such, focused solutions need to be tailored to bridge the gap between this “At risk” group and the general population. This will raise their FWB score, suggesting greater freedom to make life choices and hence increase the happiness index of Singapore.
+
+In the case of individuals with poor financial knowledge, a recommendation would be to provide classes to educate them on financial terms, investment strategies, saving habits, and various bank schemes. This relevant knowledge would allow them to effectively manage their finances and directly improve their FWB score. 
+
+As both pessimism and a poor outlook on life are aspects of mental health, the government should schedule appointments with psychologists. This provides an avenue to talk about their problems and develop a better mindset, indirectly improving their  FWB score.
+
+Lastly, individuals who are unable to pay their utility bills can be offered alternative options such as alternative billing methods, taking a loan, or extending the deadline for payment, which may potentially improve their ability to manage their finances and hence their FWB score.
+
+### Recommendation 2: Design of Graphical User Interface
+Although the solution is functional on its own, we recognize that the users of this solution  (officers of MSF) may have little to no experience with machine learning modeling or programming. Hence, we can both improve user experience as well as enhance efficiency by automating the modeling process and implementing it via a graphical user interface.
+
+The initial population database will be implemented with our aid. However, we have designed a graphical user interface to allow the officers to key in new entries, i.e. new converted citizens, into the system. The system will go through the same data preprocessing and machine learning modeling process on the entire new database as mentioned above and identify individuals that belong to the “At risk” group again. The system will then generate a list of individuals and their respective particulars into a document for the officers. 
+
+Officers can also go back in the system to update the status of financial aid for the “At risk” group, and track the progress and effectiveness of our intervention, much like a doctor’s patient log. This allows for the database to remain relevant even many years later.
+
+### Recommendation 3: Feedback Collection for Accuracy and Longevity
+Before extending help to the identified target persons, policymakers can engage them in a general survey to collect data on their general happiness level. After each year of financial aid, evaluation of the usefulness of the solution can be performed by getting these target individuals to gauge their happiness. This will be similar to a longitudinal study where we observe the same individual over different periods to assess the efficacy of our targeted financial intervention.
 
 ## Limitations
 ### Limitations of Data
