@@ -4,15 +4,15 @@
 
 Table of Contents :bookmark_tabs:
 =================
-- [Executive Summary](#overview)
+- [Executive Summary](#executive-summary)
 - [Introduction](#introduction)
-- [Analytics Approach](#dataset)
-- [Data Preparation and Understanding](#chi-squared-test)
-- [Model Development and Evaluation](#code-and-resources-used)
-- [Proposed Business Recommendations](#code-and-resources-used)
-- [Limitations](#code-and-resources-used)
-- [Future Work](#code-and-resources-used)
-- [Conclusion](#code-and-resources-used)
+- [Analytics Approach](#analytics-approach)
+- [Data Preparation and Understanding](#data-preparation-and-understanding)
+- [Model Development and Evaluation](#model-development-and-evaluation)
+- [Proposed Business Recommendations](#proposed-business-recommendations)
+- [Limitations](#limitations)
+- [Future Work](#future-work)
+- [Conclusion](#conclusion)
 - [Code and Resources Used](#code-and-resources-used)
 
 ## Executive Summary
