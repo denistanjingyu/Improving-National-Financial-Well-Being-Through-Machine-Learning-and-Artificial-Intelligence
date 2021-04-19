@@ -44,8 +44,10 @@ To ensure that our model design would be able to cater to the types of citizen p
 
 The dataset we have selected is from a survey conducted by the Consumer Financial Protection Bureau (CFPB) in 2015. The dataset consists of 217 columns and 6395 rows. The full list of variables is provided in Appendix A. The column “FWBscore” is a discrete variable that indicates a person’s financial well-being on a scale of 0-100. 
 
-“Financial Well-Being Survey Data” from Kaggle:
-https://www.kaggle.com/anthonyku1031/nfwbs-puf-2016-data 
+<p align="center">
+  “Financial Well-Being Survey Data” from Kaggle:
+  https://www.kaggle.com/anthonyku1031/nfwbs-puf-2016-data 
+</p>
 
 The “FWBscore” scale was determined via an extensive research study involving cognitive interviews, factor testing, and psychometric testing to accurately measure a person’s financial well-being according to four key elements: (i) control over day-to-day finances, (ii) capacity to absorb financial shock, (iii) financial freedom to make choices to enjoy life, and (iv) being on track to meet financial goals. The result was a 10 question scale-based scoring system that accorded each person in the dataset a holistic and comprehensive indicator of their financial well-being. Further elaboration on the survey and methods can be found in Appendix B.
 
