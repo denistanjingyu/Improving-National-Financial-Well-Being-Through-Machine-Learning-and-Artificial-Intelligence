@@ -29,7 +29,23 @@ A few business recommendations were proposed to utilize the machine learning mod
 The limitations of the data and models were discussed. Limitations of models include the tradeoff between interpretability and predictability and the difficulty in predicting social and dynamic systems. Suggested future work includes survey questions reduction using a randomized approach to reduce survey fatigue, change of target variable to happiness or health scores, and shift of focus from freedom to make life’s choices to social support and generosity, and the other factors which performed poorly when used to determine the Happiness Index in Singapore. 
 
 ## Introduction
+Singapore is internationally recognized for its booming economy. We have amongst the world’s highest GDP per capita, healthy life expectancy, and integrity in government and businesses. Furthermore, according to the Programme for International Assessment (PISA), we also deliver one of the world’s best education systems. Yet, Singapore is only ranked 31st in terms of happiness according to the World Happiness Report (WHR) 2020. The top spots were secured by the Nordic countries, with Finland taking 1st place. 
 
+![image](https://user-images.githubusercontent.com/45563371/115279662-9225d600-a179-11eb-9b2e-4647d5337bd4.png)
+
+In Singapore today, the government has extended various sorts of financial aid to help people suffering from poverty meet their daily needs for food, shelter, and education. These factors form the basis of happiness according to Maslow’s hierarchy of needs as shown above (Dr. Saul McLeod, 2009). Despite these government interventions, it seems that general happiness has not increased.
+
+Out of the six factors that contributed to the Happiness Index score, Singapore ranked 1st and 2nd in GDP per capita, healthy life expectancy, and Perception of integrity in society. However, we are only ranked 14th in freedom to make life choices which definitely can be improved. 
+
+![image](https://user-images.githubusercontent.com/45563371/115279830-c5686500-a179-11eb-97ca-1dd95a5b386b.png)
+
+The freedom to make life’s choices can be linked to a concept known as financial well-being. According to the Consumer Financial Protection Bureau (CFPB), financial well-being is defined as a state of being wherein a person can fully meet their financial obligations, can feel secure in their financial future, and can make choices that allow them to enjoy life (and thus be happy). 
+
+A recent study by the University of Purdue (Andrew T. Jebb, Louis Tay, Ed Diener, Shigehiro Oishi, 2018) also supports the fact that happiness is impacted by financial well-being, beyond just income level and basic day-to-day living expenses. By improving a person’s financial well-being, they will be able to have greater freedom to make life choices, and hence their happiness. 
+
+Therefore, it becomes critical that we can identify people who do not have this financial freedom and are hence unhappy, yet remain undetected by current measures for financial aid from the Singapore Government.
+
+As analytics consultants to the Ministry of Social and Family Development (MSF)/Community Care Endowment Fund (ComCare), our team aims to study the Financial Well-Being Survey dataset to identify the people who are struggling to obtain financial well-being. This allows us to assist policymakers in easier identification of people who are unhappy and highlight potential reasons behind their struggles.
 
 ## Analytics Approach
 Today, government agencies have access to a great deal of personal data (both financial and non-financial data) of their citizens, such as phone and traffic records, health records (including genetic records), spending habits, water and electricity consumption, and even online browsing activities.
