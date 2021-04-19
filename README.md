@@ -10,25 +10,44 @@ Table of Contents :bookmark_tabs:
 - [Chi-Squared Test](#chi-squared-test)
 - [Code and Resources Used](#code-and-resources-used)
 
-## Overview
-A/B testing in its simplest sense is an experiment on two variants to see which performs better based on a given metric. Typically, two consumer groups are exposed to two different versions of the same thing to see if there is a significant difference in metrics like sessions, click-through rate, and/or conversions.
+## Executive Summary
+This report aims to identify solutions and business recommendations to help the Ministry of Social and Family Development (MSF) better identify people with poor financial well-being which tends to lead to unhappiness. 
+
+Singapore is reputed for its high Gross Domestic Product (GDP) per capita, life expectancy, and integrity. Yet, it has a relatively low happiness level at 31st ranking in the world. To improve happiness in Singapore, our team has chosen to target an aspect that the Singapore Government can likely influence and intervene in. The aspect is financial well-being in which freedom to make life choices is a significant factor.
+
+We adopted a data-driven approach to analyze the personal data that the government collects to aggregate a more holistic judgment of one’s financial well-being through the usage of machine learning and artificial intelligence techniques. Data preprocessing steps such as data cleaning, discretization of the target variable (“At risk” and “Not at risk”), and feature selection were performed followed by data transformation before feeding into the machine learning models. Following that, we developed 7 machine learning models for binary classification: logistic regression, decision tree classifier, random forest classifier, XGBoost classifier, support vector classifier, Bernoulli naïve Bayes classifier, and neural network. A 70:30 train-test split was used to partition the data set for evaluation purposes. Hyperparameter tuning was performed on the training data set to extract the optimal performance out of the models.
+
+The 7 machine learning models were evaluated using various evaluation metrics such as accuracy, precision, recall, and F1-Score. F1-Score was chosen as the final criteria for model selection to account for imbalanced data and the cost of misclassification. All the models managed to beat the baseline F1-Score which was calculated to be at 0.3333. Support vector classifier emerged as the winner providing the highest F1-Score at 0.7194. As such, the support vector classifier was chosen to be recommended to MSF. 
+
+A few business recommendations were proposed to utilize the machine learning model. Firstly, ideas were developed to facilitate the application of the proof of concept to the actual dataset and identify the target group to assist. Secondly, to simplify the workflow for MSF’s transition into interacting with our machine learning model, a graphical user interface was proposed. They can directly export the collected data into the system and the candidates who belong to the “At risk” group along with the relevant information will be generated automatically. Thirdly, a longitudinal study can be conducted to evaluate the efficacy of the intervention by MSF.
+
+The limitations of the data and models were discussed. Limitations of models include the tradeoff between interpretability and predictability and the difficulty in predicting social and dynamic systems. Suggested future work includes survey questions reduction using a randomized approach to reduce survey fatigue, change of target variable to happiness or health scores, and shift of focus from freedom to make life’s choices to social support and generosity, and the other factors which performed poorly when used to determine the Happiness Index in Singapore. 
 
 ## Introduction
-In this project, we will be using the chi-squared test to validate an A/B test performed by a company to test the effectiveness of a new webpage in increasing conversion rates.
 
-## Dataset
-The dataset used to perform the A/B test was taken from [Kaggle](https://www.kaggle.com/zhangluyuan/ab-testing).
 
-This dataset contains the result of an A/B test where two groups, the control group and the treatment group, were exposed to an old webpage and a new webpage respectively. The purpose of this test was to determine if the new webpage resulted in a significant increase in conversions compared to the old webpage. Each row represents a unique user and shows whether they’re in the control or treatment group and whether they converted or not.
+## Analytics Approach
 
-## Chi-Squared Test
-After the data was cleaned and correctly formatted, the Chi-Squared Test can be performed. This can simply be done by importing stats from the SciPy library. This step calculates both the chi-squared statistic and the p-value.
 
-The p-value was calculated to be 23%. Assuming a 5% level of significance, we can deduce that the p-value is greater than the alpha and that we fail to reject the null hypothesis. In other words, there is no significance in conversions between the old and new webpage.
+## Data Preparation and Understanding
+
+
+
+
+## Model Development and Evaluation
+
+
+## Proposed Business Recommendations
+
+## Limitations
+
+## Future Work
+
+## Conclusion
 
 ## Code and Resources Used
-**Python:** Version 3.7.4
+**Python:** Version 3.7.10
 
-**Packages:** pandas, numpy, matplotlib, scipy
+**Packages:** pandas, numpy, matplotlib, seaborn, category_encoders, tensorflow, xgboost, keras, sklearn
 
 **Dataset:** https://www.kaggle.com/zhangluyuan/ab-testing
