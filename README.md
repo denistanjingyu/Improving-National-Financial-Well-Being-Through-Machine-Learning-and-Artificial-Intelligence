@@ -4,10 +4,15 @@
 
 Table of Contents :bookmark_tabs:
 =================
-- [Overview](#overview)
+- [Executive Summary](#overview)
 - [Introduction](#introduction)
-- [Dataset](#dataset)
-- [Chi-Squared Test](#chi-squared-test)
+- [Analytics Approach](#dataset)
+- [Data Preparation and Understanding](#chi-squared-test)
+- [Model Development and Evaluation](#code-and-resources-used)
+- [Proposed Business Recommendations](#code-and-resources-used)
+- [Limitations](#code-and-resources-used)
+- [Future Work](#code-and-resources-used)
+- [Conclusion](#code-and-resources-used)
 - [Code and Resources Used](#code-and-resources-used)
 
 ## Executive Summary
@@ -44,10 +49,13 @@ The limitations of the data and models were discussed. Limitations of models inc
 ## Future Work
 
 ## Conclusion
+In conclusion, the machine learning model facilitates the data-driven approach to identify people in Singapore who might experience higher levels of unhappiness due to poor financial well-being. We accomplish this by first obtaining a complete and cleaned dataset through various data preprocessing steps. The processed and transformed data was fed into the machine learning models. The support vector classifier performed the best based on F1-Score and was recommended as the model of choice for the Ministry of Social and Family Development (MSF). 
+
+Through the data-driven approach, our solution overcomes human biases and provides accurate and timely information for better decision-making. In the short and medium term, the machine learning model would help MSF to better identify citizens who have poorer financial well-being which leads to unhappiness, and provide them aid. Fine-tuning of policies serves as a long-term measure to improve the happiness index of Singapore. 
 
 ## Code and Resources Used
 **Python:** Version 3.7.10
 
 **Packages:** pandas, numpy, matplotlib, seaborn, category_encoders, tensorflow, xgboost, keras, sklearn
 
-**Dataset:** https://www.kaggle.com/zhangluyuan/ab-testing
+**Dataset:** https://www.kaggle.com/anthonyku1031/nfwbs-puf-2016-data
