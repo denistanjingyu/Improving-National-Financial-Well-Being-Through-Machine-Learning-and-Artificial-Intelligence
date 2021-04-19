@@ -238,6 +238,8 @@ The initial population database will be implemented with our aid. However, we ha
 
 Officers can also go back in the system to update the status of financial aid for the “At risk” group, and track the progress and effectiveness of our intervention, much like a doctor’s patient log. This allows for the database to remain relevant even many years later.
 
+![image](https://user-images.githubusercontent.com/45563371/115284362-2d6d7a00-a17f-11eb-9c1d-088b7054ad43.png)
+
 ### Recommendation 3: Feedback Collection for Accuracy and Longevity
 Before extending help to the identified target persons, policymakers can engage them in a general survey to collect data on their general happiness level. After each year of financial aid, evaluation of the usefulness of the solution can be performed by getting these target individuals to gauge their happiness. This will be similar to a longitudinal study where we observe the same individual over different periods to assess the efficacy of our targeted financial intervention.
 
