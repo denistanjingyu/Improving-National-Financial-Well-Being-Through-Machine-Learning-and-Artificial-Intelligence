@@ -71,14 +71,16 @@ Using machine learning and artificial intelligence techniques, we aim to leverag
 ### Data Set Description
 To ensure that our model design would be able to cater to the types of citizen profile data that would be used in real-life implementation, the dataset selected for this project was one that the team deemed to have sufficient nexus with the actual data that is likely to be available. The main criteria for a suitable dataset were that it needed to have a qualifying variable to determine financial well-being, as well as a variety of other variables commonly found in government databases. 
 
-The dataset we have selected is from a survey conducted by the Consumer Financial Protection Bureau (CFPB) in 2015. The dataset consists of 217 columns and 6395 rows. The full list of variables is provided in Appendix A. The column “FWBscore” is a discrete variable that indicates a person’s financial well-being on a scale of 0-100. 
+The dataset we have selected is from a survey conducted by the Consumer Financial Protection Bureau (CFPB) in 2015. The dataset consists of 217 columns and 6395 rows. The column “FWBscore” is a discrete variable that indicates a person’s financial well-being on a scale of 0-100. 
 
 <p align="center">
   “Financial Well-Being Survey Data” from Kaggle:
   https://www.kaggle.com/anthonyku1031/nfwbs-puf-2016-data 
 </p>
 
-The “FWBscore” scale was determined via an extensive research study involving cognitive interviews, factor testing, and psychometric testing to accurately measure a person’s financial well-being according to four key elements: (i) control over day-to-day finances, (ii) capacity to absorb financial shock, (iii) financial freedom to make choices to enjoy life, and (iv) being on track to meet financial goals. The result was a 10 question scale-based scoring system that accorded each person in the dataset a holistic and comprehensive indicator of their financial well-being. Further elaboration on the survey and methods can be found in Appendix B.
+The “FWBscore” scale was determined via an extensive research study involving cognitive interviews, factor testing, and psychometric testing to accurately measure a person’s financial well-being according to four key elements: (i) control over day-to-day finances, (ii) capacity to absorb financial shock, (iii) financial freedom to make choices to enjoy life, and (iv) being on track to meet financial goals. The result was a 10 question scale-based scoring system that accorded each person in the dataset a holistic and comprehensive indicator of their financial well-being. Further elaboration on the survey and methods can be found below.
+
+![image](https://user-images.githubusercontent.com/45563371/115283886-8e488280-a17e-11eb-9a51-c5971b3ba68d.png)
 
 In addition to asking the 10 questions directly related to computing the FWB Score, indirect questions such as financial knowledge, education level, income and employment, family history, financial habits, demographic information were also asked in the survey. 
 
@@ -181,7 +183,9 @@ Recall is the proportion of true positives out of those total actual positives. 
 
 F1-Score is the harmonic mean of precision and recall. It is a suitable evaluation metric when the costs of false positives and false negatives are both high. For imbalanced data sets, F1-Score is also better than the accuracy score. It ignores true negatives in its calculation. A data set with a high proportion of one class tends to have an inflated accuracy score as the machine learning model can simply predict the majority class all the time.
 
-Given that the data set is imbalanced with an 80% negative class and both false positives and false negatives are relatively important, our team will use F1-Score as the evaluation metric for choosing the final machine learning model. However, all 4 evaluation metrics will be calculated to examine the tradeoffs between different machine learning models. Refer to Appendix D for the formula of these 4 key evaluation metrics. 
+Given that the data set is imbalanced with an 80% negative class and both false positives and false negatives are relatively important, our team will use F1-Score as the evaluation metric for choosing the final machine learning model. However, all 4 evaluation metrics will be calculated to examine the tradeoffs between different machine learning models. Refer to the figure below for the formula of these 4 key evaluation metrics. 
+
+![image](https://user-images.githubusercontent.com/45563371/115283964-ab7d5100-a17e-11eb-8abd-e08e94961095.png)
 
 #### Baseline F1-Score
 A baseline F1-Score acts as a lower bound to evaluate the performances of the machine learning models. The baseline model will be defined as the dummy predictor where it will predict the candidate to be “At risk” or 1 all the time. A trained model is usually expected to perform better than the baseline model. Otherwise, there is no reason to use the model.
