@@ -1,6 +1,6 @@
 # Improving National Financial Well-Being Through Machine Learning and Artificial Intelligence
 
-![image](https://user-images.githubusercontent.com/45563371/102698671-1b83d500-427a-11eb-8000-5cd455e57c99.png)
+![image](https://therightnewsnetwork.com/wp-content/uploads/2019/03/TRNN-Revelations-Finance.png)
 
 Table of Contents :bookmark_tabs:
 =================
