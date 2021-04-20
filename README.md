@@ -13,6 +13,7 @@ Table of Contents :bookmark_tabs:
 - [Limitations](#limitations)
 - [Future Work](#future-work)
 - [Conclusion](#conclusion)
+- [References](#references)
 - [Code and Resources Used](#code-and-resources-used)
 
 ## Executive Summary
@@ -280,6 +281,17 @@ Finally, we can shift our focus from freedom to make life’s choices to social 
 In conclusion, the machine learning model facilitates the data-driven approach to identify people in Singapore who might experience higher levels of unhappiness due to poor financial well-being. We accomplish this by first obtaining a complete and cleaned dataset through various data preprocessing steps. The processed and transformed data was fed into the machine learning models. The support vector classifier performed the best based on F1-Score and was recommended as the model of choice for the Ministry of Social and Family Development (MSF). 
 
 Through the data-driven approach, our solution overcomes human biases and provides accurate and timely information for better decision-making. In the short and medium term, the machine learning model would help MSF to better identify citizens who have poorer financial well-being which leads to unhappiness, and provide them aid. Fine-tuning of policies serves as a long-term measure to improve the happiness index of Singapore. 
+
+## References
+Andrew T. Jebb, Louis Tay, Ed Diener, Shigehiro Oishi. (2018). LETTERShttps://doi.org/10.1038/s41562-017-0277-0© 2018 Macmillan Publishers Limited, part of Springer Nature. All rights reserved.1Department of Psychological Sciences, Purdue University, West Lafayette, IN, USA. 2Department of Psychology, University of Vi. Retrieved from https://www.nature.com/articles/s41562-017-0277-0.epdf
+
+Dr. Saul McLeod. (2009, December 29). Maslow's Hierarchy of Needs. Retrieved from https://www.simplypsychology.org/maslow.html
+
+Human Resources Director. (n.d.). Why is financial wellness so important? Retrieved from https://www.hcamag.com/asia/specialisation/financial-wellness/why-is-financial-wellness-so-important/178498
+
+OCBC. (2020). The OCBC Financial Wellness Index 2020 is 61, down 2 points from last year. Retrieved from https://www.ocbc.com/simplyspoton/financial-wellness-index.html
+
+Simon Leow. (2020, July 8). Why Is Singapore Not Happier? Retrieved from https://happinessinitiative.sg/why-is-singapore-not-happier/
 
 ## Code and Resources Used
 **Python:** Version 3.7.10
