@@ -1,6 +1,6 @@
 # Improving National Financial Well-Being Through Machine Learning and Artificial Intelligence
 
-![image](https://therightnewsnetwork.com/wp-content/uploads/2019/03/TRNN-Revelations-Finance.png)
+<p align="center"><img src="https://therightnewsnetwork.com/wp-content/uploads/2019/03/TRNN-Revelations-Finance.png" /></p>
 
 Table of Contents :bookmark_tabs:
 =================
@@ -32,13 +32,13 @@ The limitations of the data and models were discussed. Limitations of models inc
 ### Business Problem Statement
 Singapore is internationally recognized for its booming economy. We have amongst the world’s highest GDP per capita, healthy life expectancy, and integrity in government and businesses. Furthermore, according to the Programme for International Assessment (PISA), we also deliver one of the world’s best education systems. Yet, Singapore is only ranked 31st in terms of happiness according to the World Happiness Report (WHR) 2020. The top spots were secured by the Nordic countries, with Finland taking 1st place. 
 
-![image](https://user-images.githubusercontent.com/45563371/115279662-9225d600-a179-11eb-9b2e-4647d5337bd4.png)
+<p align="center"><img src="https://user-images.githubusercontent.com/45563371/115279662-9225d600-a179-11eb-9b2e-4647d5337bd4.png" /></p>
 
 In Singapore today, the government has extended various sorts of financial aid to help people suffering from poverty meet their daily needs for food, shelter, and education. These factors form the basis of happiness according to Maslow’s hierarchy of needs as shown above (Dr. Saul McLeod, 2009). Despite these government interventions, it seems that general happiness has not increased.
 
 Out of the six factors that contributed to the Happiness Index score, Singapore ranked 1st and 2nd in GDP per capita, healthy life expectancy, and Perception of integrity in society. However, we are only ranked 14th in freedom to make life choices which definitely can be improved. 
 
-![image](https://user-images.githubusercontent.com/45563371/115279830-c5686500-a179-11eb-97ca-1dd95a5b386b.png)
+<p align="center"><img src="https://user-images.githubusercontent.com/45563371/115279830-c5686500-a179-11eb-97ca-1dd95a5b386b.png" /></p>
 
 The freedom to make life’s choices can be linked to a concept known as financial well-being. According to the Consumer Financial Protection Bureau (CFPB), financial well-being is defined as a state of being wherein a person can fully meet their financial obligations, can feel secure in their financial future, and can make choices that allow them to enjoy life (and thus be happy). 
 
@@ -80,7 +80,7 @@ The dataset we have selected is from a survey conducted by the Consumer Financia
 
 The “FWBscore” scale was determined via an extensive research study involving cognitive interviews, factor testing, and psychometric testing to accurately measure a person’s financial well-being according to four key elements: (i) control over day-to-day finances, (ii) capacity to absorb financial shock, (iii) financial freedom to make choices to enjoy life, and (iv) being on track to meet financial goals. The result was a 10 question scale-based scoring system that accorded each person in the dataset a holistic and comprehensive indicator of their financial well-being. Further elaboration on the survey and methods can be found below.
 
-![image](https://user-images.githubusercontent.com/45563371/115283886-8e488280-a17e-11eb-9a51-c5971b3ba68d.png)
+<p align="center"><img src="https://user-images.githubusercontent.com/45563371/115283886-8e488280-a17e-11eb-9a51-c5971b3ba68d.png" /></p>
 
 In addition to asking the 10 questions directly related to computing the FWB Score, indirect questions such as financial knowledge, education level, income and employment, family history, financial habits, demographic information were also asked in the survey. 
 
@@ -88,16 +88,16 @@ This dataset provides us with a multitude of personal data available to a govern
 
 ### Exploratory Data Analysis 
 
-![image](https://user-images.githubusercontent.com/45563371/115280293-5ccdb800-a17a-11eb-8a05-f2317d5e1b3d.png)
+<p align="center"><img src="https://user-images.githubusercontent.com/45563371/115280293-5ccdb800-a17a-11eb-8a05-f2317d5e1b3d.png" /></p>
 
 The original distribution of FWBscore is roughly normally distributed with values ranging from 14-95, mean of 56, and standard deviation of 14. This is to be expected given the extensive research that has gone into formulating the FWBscore scale as well as the relatively large sample size that has been adjusted for minority group representation. Scores related to social science applications are usually normally distributed as well. 
 Since the FWBscore is on a scale of 0-100, the negative values are not valid scores. They are arbitrarily encoded to represent certain statuses. Specifically, “-4” indicates that the respondent’s answer was not written to the database and “-1” indicates that the respondent refused to have the score calculated. Also, when transforming the target variable into a binary variable, later on, we may have to rebalance the dataset such that the predictive power of the model is not hampered. 
 
-![image](https://user-images.githubusercontent.com/45563371/115280374-7111b500-a17a-11eb-9802-916b70dfe39a.png)
+<p align="center"><img src="https://user-images.githubusercontent.com/45563371/115280374-7111b500-a17a-11eb-9802-916b70dfe39a.png" /></p>
 
 The 10 features (survey questions) used to compute the target variable FWBscore were explored as well using histograms. FWB1_4 and FWB2_2 are concentrated towards the last 3 responses (somewhat/very well/completely). FWB1_3, FWB2_1, FWB2_3 and FWB2_4 are concentrated towards the first 3 responses (never/rarely/sometimes). Other features are roughly normally distributed with not much skew. The overall sentiment is that the respondents are quite optimistic about their finances in terms of security and freedom of choice for the present and future. However, the FWBscore's normal distribution would slightly disagree with the respondents' optimism.
 
-![image](https://user-images.githubusercontent.com/45563371/115280411-7bcc4a00-a17a-11eb-800b-f10c652f580a.png)
+<p align="center"><img src="https://user-images.githubusercontent.com/45563371/115280411-7bcc4a00-a17a-11eb-800b-f10c652f580a.png" /></p>
 
 All the feature correlations to FWBscore were calculated and sorted. As seen from above, the top 6 negative correlation and top 4 positive correlation are all the direct questions asked in the Financial Well-Being Survey to compute FWBscore.
 
@@ -162,7 +162,7 @@ For both grid search and random search, the number of cross-validation trials fo
 ### Model Evaluation
 #### Confusion Matrix Explanation and its Tradeoffs
 
-![image](https://user-images.githubusercontent.com/45563371/115283286-bd122900-a17d-11eb-9ac0-f8eded78560f.png)
+<p align="center"><img src="https://user-images.githubusercontent.com/45563371/115283286-bd122900-a17d-11eb-9ac0-f8eded78560f.png" /></p>
 
 A confusion matrix can be thought of as a contingency table for evaluating the classification performance of a machine learning model. Essentially, it is a N x N table or matrix where N is the number of classes we are trying to predict. For our data set, there are 2 classes: “At risk” and “Not at risk” encoded by 1 and 0 respectively. Therefore, the value of N is 2 and the table will have 2 rows and 2 columns with a total of 4 values.
 
@@ -185,7 +185,7 @@ F1-Score is the harmonic mean of precision and recall. It is a suitable evaluati
 
 Given that the data set is imbalanced with an 80% negative class and both false positives and false negatives are relatively important, our team will use F1-Score as the evaluation metric for choosing the final machine learning model. However, all 4 evaluation metrics will be calculated to examine the tradeoffs between different machine learning models. Refer to the figure below for the formula of these 4 key evaluation metrics. 
 
-![image](https://user-images.githubusercontent.com/45563371/115283964-ab7d5100-a17e-11eb-8abd-e08e94961095.png)
+<p align="center"><img src="https://user-images.githubusercontent.com/45563371/115283964-ab7d5100-a17e-11eb-8abd-e08e94961095.png" /></p>
 
 #### Baseline F1-Score
 A baseline F1-Score acts as a lower bound to evaluate the performances of the machine learning models. The baseline model will be defined as the dummy predictor where it will predict the candidate to be “At risk” or 1 all the time. A trained model is usually expected to perform better than the baseline model. Otherwise, there is no reason to use the model.
@@ -196,13 +196,13 @@ On the other hand, the recall will be equal to 1. Since the baseline model predi
 
 With the precision and recall values for the baseline model, we can calculate the baseline F1-Score. The calculation is shown below.
 
-![image](https://user-images.githubusercontent.com/45563371/115282980-6573bd80-a17d-11eb-9ddb-805668396913.png)
+<p align="center"><img src="https://user-images.githubusercontent.com/45563371/115282980-6573bd80-a17d-11eb-9ddb-805668396913.png" /></p>
 
 Therefore, the benchmark F1-Score is 0.3333 and the model is required to beat this score.
 
 #### Comparison of Evaluation Metrics
 
-![image](https://user-images.githubusercontent.com/45563371/115279086-d49ae300-a178-11eb-9a21-1ff63601f805.png)
+<p align="center"><img src="https://user-images.githubusercontent.com/45563371/115279086-d49ae300-a178-11eb-9a21-1ff63601f805.png" /></p>
 
 The evaluation metrics table above details the accuracy, precision, recall, and F1-Score for all 7 trained machine learning models. All the scores were evaluated based on the test data set. Logistics regression has the highest accuracy at 0.8821. The neural network has the highest precision at 0.7778. Random forest classifier has the highest recall at 0.8656. The support vector classifier has the highest F1-Score at 0.7194.
 
@@ -238,7 +238,7 @@ The initial population database will be implemented with our aid. However, we ha
 
 Officers can also go back in the system to update the status of financial aid for the “At risk” group, and track the progress and effectiveness of our intervention, much like a doctor’s patient log. This allows for the database to remain relevant even many years later.
 
-![image](https://user-images.githubusercontent.com/45563371/115284362-2d6d7a00-a17f-11eb-9c1d-088b7054ad43.png)
+<p align="center"><img src="https://user-images.githubusercontent.com/45563371/115284362-2d6d7a00-a17f-11eb-9c1d-088b7054ad43.png" /></p>
 
 ### Recommendation 3: Feedback Collection for Accuracy and Longevity
 Before extending help to the identified target persons, policymakers can engage them in a general survey to collect data on their general happiness level. After each year of financial aid, evaluation of the usefulness of the solution can be performed by getting these target individuals to gauge their happiness. This will be similar to a longitudinal study where we observe the same individual over different periods to assess the efficacy of our targeted financial intervention.
